@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 open class CalendarMessageSizeCalculator: MessageSizeCalculator {
     
-    open override func messageContainerSize(for message: MessageType) -> CGSize {
+    open override func messageContainerSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
         switch message.kind {
         case .calendar(let calendarItem):
             

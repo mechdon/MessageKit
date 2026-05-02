@@ -56,6 +56,11 @@ public enum MessageKind {
 
   /// A link preview message.
   case linkPreview(LinkItem)
+    
+  /// CUSTOM CASES HERE:
+  case calendar(CalendarItem)
+  case list(ListItem)
+  case poll(PollItem)
 
   /// A custom message.
   /// - Note: Using this case requires that you implement the following methods and handle this case:
