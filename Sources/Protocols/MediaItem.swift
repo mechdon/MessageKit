@@ -25,15 +25,32 @@ import UIKit
 
 /// A protocol used to represent the data for a media message.
 public protocol MediaItem {
-  /// The url where the media is located.
-  var url: URL? { get }
 
-  /// The image.
-  var image: UIImage? { get }
+    /// The url where the media is located.
+    var url: URL? { get }
 
-  /// A placeholder image for when the image is obtained asynchronously.
-  var placeholderImage: UIImage { get }
+    /// The image.
+    var image: UIImage? { get }
 
-  /// The size of the media item.
-  var size: CGSize { get }
+    /// A placeholder image for when the image is obtained asynchronously.
+    var placeholderImage: UIImage { get }
+
+    /// The size of the media item.
+    var size: CGSize { get }
+
+    /// An optional caption for the media item.
+    var caption: String? { get }
+
+    /// An optional video URL (used for video messages).
+    var vidurl: URL? { get }
+
+    /// An optional document image URL (used for document messages).
+    var docImgUrl: URL? { get }
+
+}
+
+public extension MediaItem {
+    var caption: String? { return nil }
+    var vidurl: URL? { return nil }
+    var docImgUrl: URL? { return nil }
 }
