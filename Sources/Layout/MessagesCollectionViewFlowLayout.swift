@@ -73,6 +73,7 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
   lazy open var calendarMessageSizeCalculator = CalendarMessageSizeCalculator(layout: self)
   lazy open var listMessageSizeCalculator = ListMessageSizeCalculator(layout: self)
   lazy open var pollMessageSizeCalculator = PollMessageSizeCalculator(layout: self)
+  lazy open var documentMessageSizeCalculator = MediaMessageSizeCalculator(layout: self)
 
   /// A method that by default checks if the section is the last in the
   /// `messagesCollectionView` and that `isTypingIndicatorViewHidden`
@@ -162,6 +163,8 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         .contactCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView) ?? contactMessageSizeCalculator
     case .linkPreview:
       return linkPreviewMessageSizeCalculator
+    case .document:
+        return documentMessageSizeCalculator
     case .calendar:
         return calendarMessageSizeCalculator
     case .list:
@@ -192,7 +195,8 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
       linkPreviewMessageSizeCalculator,
       calendarMessageSizeCalculator,
       listMessageSizeCalculator,
-      pollMessageSizeCalculator
+      pollMessageSizeCalculator,
+      documentMessageSizeCalculator
     ]
   }
 
