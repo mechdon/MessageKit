@@ -9,7 +9,7 @@ import Foundation
 
 open class ListMessageSizeCalculator: MessageSizeCalculator {
     
-    open override func messageContainerSize(for message: MessageType) -> CGSize {
+    open override func messageContainerSize(for message: MessageType, at indexPath: IndexPath) -> CGSize {
         switch message.kind {
         case .list:
             return CGSize(width: 300, height: 100)

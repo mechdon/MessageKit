@@ -10,7 +10,7 @@ import UIKit
 
 open class PollMessageSizeCalculator: MessageSizeCalculator {
     
-    open override func messageContainerSize(for message: MessageType) -> CGSize {
+    open override func messageContainerSize(for message: MessageType, at indexPath: IndexPath) -> CGSize {
         switch message.kind {
         case .poll(let pollItem):
             
