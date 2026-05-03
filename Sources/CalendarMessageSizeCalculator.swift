@@ -7,10 +7,12 @@
 
 import Foundation
 import UIKit
+import MessageKit // Ensure MessageKit is imported if needed by your setup
 
 open class CalendarMessageSizeCalculator: MessageSizeCalculator {
     
-    open override func messageContainerSize(for message: MessageType, at indexPath: IndexPath) -> CGSize {{
+    open override func messageContainerSize(for message: MessageType, at indexPath: IndexPath) -> CGSize {
+        
         switch message.kind {
         case .calendar(let calendarItem):
             
@@ -66,8 +68,9 @@ open class CalendarMessageSizeCalculator: MessageSizeCalculator {
             fatalError("messageContainerSize received unhandled MessageDataType: \(message.kind)")
         }
     }
-}
+} // <--- THIS IS THE CRUCIAL BRACE THAT CLOSES THE CLASS
 
+// THE EXTENSION MUST SIT OUTSIDE THE CLASS
 extension String {
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
