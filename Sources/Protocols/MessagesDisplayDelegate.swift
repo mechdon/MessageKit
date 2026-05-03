@@ -224,6 +224,7 @@ public protocol MessagesDisplayDelegate: AnyObject {
   ///
   /// - Note:
   ///   The default value returned by this method is UIColor.sendButtonBlue
+
   func audioTintColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView)
     -> UIColor
 
@@ -250,6 +251,30 @@ public protocol MessagesDisplayDelegate: AnyObject {
   ///   - message: The `MessageType` that will be displayed by this cell.
   ///   - indexPath: The `IndexPath` of the cell.
   ///   - messagesCollectionView: The `MessagesCollectionView` in which this cell will be displayed.
+
+// MARK: - Custom Messages
+
+  /// Used to configure the calendar cell UI.
+  ///
+  /// - Parameters:
+  ///   - cell: The `CalendarMessageCell` that needs to be configured.
+  ///   - message: The `MessageType` that configures the cell.
+  func configureCalendarCell(_ cell: CalendarMessageCell, message: MessageType)
+
+  /// Used to configure the list cell UI.
+  ///
+  /// - Parameters:
+  ///   - cell: The `ListMessageCell` that needs to be configured.
+  ///   - message: The `MessageType` that configures the cell.
+  func configureListCell(_ cell: ListMessageCell, message: MessageType)
+
+  /// Used to configure the poll cell UI.
+  ///
+  /// - Parameters:
+  ///   - cell: The `PollMessageCell` that needs to be configured.
+  ///   - message: The `MessageType` that configures the cell.
+  func configurePollCell(_ cell: PollMessageCell, message: MessageType)
+    
   func configureLinkPreviewImageView(
     _ imageView: UIImageView,
     for message: MessageType,
@@ -364,6 +389,16 @@ extension MessagesDisplayDelegate {
   // MARK: - Audio Message Defaults
 
   public func configureAudioCell(_: AudioMessageCell, message _: MessageType) { }
+    
+    
+  // MARK: - Custom Message Defaults
+
+  public func configureCalendarCell(_: CalendarMessageCell, message _: MessageType) { }
+
+  public func configureListCell(_: ListMessageCell, message _: MessageType) { }
+
+  public func configurePollCell(_: PollMessageCell, message _: MessageType) { }
+    
 
   public func audioTintColor(
     for message: MessageType,

@@ -228,6 +228,12 @@ open class MessagesCollectionView: UICollectionView {
     register(ContactMessageCell.self)
     register(TypingIndicatorCell.self)
     register(LinkPreviewMessageCell.self)
+      
+    // MARK: - INJECTED CUSTOM CELLS
+    register(CalendarMessageCell.self)
+    register(ListMessageCell.self)
+    register(PollMessageCell.self)
+      
     register(MessageReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
     register(MessageReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
   }
