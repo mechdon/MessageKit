@@ -173,6 +173,30 @@ open class MessagesViewController: UIViewController, UICollectionViewDelegateFlo
         cell.configure(with: message, at: indexPath, and: messagesCollectionView)
         return cell
       }
+    case .calendar:
+      if let cell = messagesDataSource.calendarCell(for: message, at: indexPath, in: messagesCollectionView) {
+        return cell
+      } else {
+        let cell = messagesCollectionView.dequeueReusableCell(CalendarMessageCell.self, for: indexPath)
+        cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+        return cell
+      }
+    case .list:
+      if let cell = messagesDataSource.listCell(for: message, at: indexPath, in: messagesCollectionView) {
+        return cell
+      } else {
+        let cell = messagesCollectionView.dequeueReusableCell(ListMessageCell.self, for: indexPath)
+        cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+        return cell
+      }
+    case .poll:
+      if let cell = messagesDataSource.pollCell(for: message, at: indexPath, in: messagesCollectionView) {
+        return cell
+      } else {
+        let cell = messagesCollectionView.dequeueReusableCell(PollMessageCell.self, for: indexPath)
+        cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+        return cell
+      }
     case .linkPreview:
       let cell = messagesCollectionView.dequeueReusableCell(LinkPreviewMessageCell.self, for: indexPath)
       cell.configure(with: message, at: indexPath, and: messagesCollectionView)

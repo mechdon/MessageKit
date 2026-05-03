@@ -183,6 +183,43 @@ public protocol MessagesDataSource: AnyObject {
   ///
   /// - Note:
   ///   This method will call fatalError() on default. You must override this method if you are using MessageKind.custom messages.
+
+  /// Calendar collectionView cell for message with `calendar` message type.
+  ///
+  /// - Parameters:
+  ///   - message: The `calendar` message type
+  ///   - indexPath: The `IndexPath` of the cell.
+  ///   - messagesCollectionView: The `MessagesCollectionView` in which this cell will be displayed.
+  ///
+  /// - Note:
+  ///   This method will return nil by default. You must override this method only if you want your own cell.
+  func calendarCell(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView)
+        -> UICollectionViewCell?
+
+  /// List collectionView cell for message with `list` message type.
+  ///
+  /// - Parameters:
+  ///   - message: The `list` message type
+  ///   - indexPath: The `IndexPath` of the cell.
+  ///   - messagesCollectionView: The `MessagesCollectionView` in which this cell will be displayed.
+  ///
+  /// - Note:
+  ///   This method will return nil by default. You must override this method only if you want your own cell.
+  func listCell(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView)
+        -> UICollectionViewCell?
+
+  /// Poll collectionView cell for message with `poll` message type.
+  ///
+  /// - Parameters:
+  ///   - message: The `poll` message type
+  ///   - indexPath: The `IndexPath` of the cell.
+  ///   - messagesCollectionView: The `MessagesCollectionView` in which this cell will be displayed.
+  ///
+  /// - Note:
+  ///   This method will return nil by default. You must override this method only if you want your own cell.
+  func pollCell(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView)
+        -> UICollectionViewCell?
+    
   func customCell(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView)
     -> UICollectionViewCell
 
@@ -250,6 +287,18 @@ extension MessagesDataSource {
   public func contactCell(for _: MessageType, at _: IndexPath, in _: MessagesCollectionView) -> UICollectionViewCell? {
     nil
   }
+    
+  public func calendarCell(for _: MessageType, at _: IndexPath, in _: MessagesCollectionView) -> UICollectionViewCell? {
+        nil
+      }
+
+  public func listCell(for _: MessageType, at _: IndexPath, in _: MessagesCollectionView) -> UICollectionViewCell? {
+        nil
+      }
+
+  public func pollCell(for _: MessageType, at _: IndexPath, in _: MessagesCollectionView) -> UICollectionViewCell? {
+        nil
+      }
 
   public func customCell(for _: MessageType, at _: IndexPath, in _: MessagesCollectionView) -> UICollectionViewCell {
     fatalError(MessageKitError.customDataUnresolvedCell)
